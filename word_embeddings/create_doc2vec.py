@@ -33,11 +33,12 @@ def main():
     required.add_argument('-i', '--index', required=True, help='The Indri index to use.')
     required.add_argument('-n', '--model-name', required=True, help='The name to use when saving the model.')
     options.add_argument('-w', '--workers', required=False, type=int, default=3, help='The number of workers to use.')
+    options.add_argument('-s', '--size', required=False, type=int, default=100, help='The size of the vectors.')
     args = options.parse_args()
 
     index = pyndri.Index(args.index)
 
-    doc2vec = gensim.models.Doc2Vec(IndriDocuments(index), workers=args.workers, vector_size=args.s)
+    doc2vec = gensim.models.Doc2Vec(IndriDocuments(index), workers=args.workers, vector_size=args.size)
     doc2vec.save(args.model_name)
 
 
