@@ -52,7 +52,7 @@ def main():
         for similar_doc, cosine_score in similar_docs:
             try:
                 similar_docno = sim_doc_index.ext_document_id(similar_doc)
-                print(doc, similar_docno, cosine_score, sep=',')
+                print(doc, similar_docno.encode('iso-8859-1').decode('utf-8'), cosine_score, sep=',')
             except IndexError:
                 print('Issue with docID:', similar_doc, file=sys.stderr)
 
