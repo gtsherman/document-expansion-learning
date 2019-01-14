@@ -26,6 +26,7 @@ def main():
 
     d2v = gensim.models.doc2vec.Doc2Vec.load(args.model_name)
     dv = d2v.docvecs
+    dv.init_sims(replace=True)
     if args.outside_index is None:
         del d2v  # save memory, but can only do this if we don't need to infer a vector
 
